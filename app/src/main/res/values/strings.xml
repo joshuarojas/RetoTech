@@ -3,5 +3,12 @@
     <string name="login_footer">Reto tech - Intercorp Retail\npor Joshua Rojas</string>
     <string name="login_login">Iniciar sesión</string>
     <string name="login_re_send"><u>No recibiste el SMS?</u></string>
-    <string name="login_hint">999 999 999</string>
+    <string name="login_hint">Número celular</string>
+    <string name="preference_file_key">IRPreference</string>
+    <string name="app_accept">Aceptar</string>
+    <string name="login_uncompleted_number">Al parecer no has ingresado un número celular correcto, revisa la informacion.</string>
+    <string name="login_uncompleted_code">Al parecer no has ingresado un codigo correcto, revisa la informacion.</string>
+    <string name="login_couldnt_send_message">Ha ocurrido un error al enviar el SMS, vuelve a intentarlo por favor.</string>
+    <string name="login_verify_number">Verificar Codigo</string>
+    <string name="login_verify">Codigo de verificación</string>
 </resources>

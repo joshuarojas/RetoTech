@@ -7,15 +7,15 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 
+import com.samuelchowi.intercorpretail.BaseActivity;
 import com.samuelchowi.intercorpretail.R;
 import com.samuelchowi.intercorpretail.databinding.ActivitySplashBinding;
 import com.samuelchowi.intercorpretail.login.LoginActivity;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends BaseActivity {
 
     private ActivitySplashBinding binding;
 

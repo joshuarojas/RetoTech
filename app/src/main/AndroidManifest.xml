@@ -14,7 +14,7 @@
 
         <activity
             android:name=".splash.SplashActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="sensorPortrait"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,7 +25,7 @@
 
         <activity
             android:name=".login.LoginActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="sensorPortrait"
             android:theme="@style/AppTheme" />
 
     </application>

@@ -31,6 +31,8 @@ dependencies {
     implementation deps.firebase.auth
     implementation deps.firebase.realtime
 
+    implementation deps.lifecycle.viewmodel
+    annotationProcessor deps.lifecycle.processor
     implementation deps.lottie
 
     testImplementation 'junit:junit:4.12'
