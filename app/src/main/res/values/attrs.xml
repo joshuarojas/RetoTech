@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="IRTextStyle">
+        <attr name="customFont" format="enum">
+            <enum name="Helvetica" value="0" />
+            <enum name="Helvetica_Bold" value="1" />
+            <enum name="Helvetica_Neue_Medium" value="2" />
+            <enum name="Omnes_Semi_Bold" value="3" />
+        </attr>
+    </declare-styleable>
+</resources>

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "657912027677",
+    "firebase_url": "https://intercorpretail-7d294.firebaseio.com",
+    "project_id": "intercorpretail-7d294",
+    "storage_bucket": "intercorpretail-7d294.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:657912027677:android:8057fb9fe26d3f0d",
+        "android_client_info": {
+          "package_name": "com.samuelchowi.intercorpretail"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "657912027677-jrvo4kfjc0m03ma19hmict24sg743n99.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.samuelchowi.intercorpretail",
+            "certificate_hash": "56c72a3fe54ea3d2a869cecbe6307c63dbad2ae0"
+          }
+        },
+        {
+          "client_id": "657912027677-r083sa9d6ma02m8ln4fguj7pemi8oajh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwCRffVtLDDqVFxwmrWZIW-PPZ5NOUNS0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "657912027677-r083sa9d6ma02m8ln4fguj7pemi8oajh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

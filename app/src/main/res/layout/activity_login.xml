@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="@android:color/white"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.2" />
+
+        <ImageView
+            android:id="@+id/ivwSplash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:scaleX="2"
+            android:scaleY="2"
+            android:src="@drawable/intercorp_logo"
+            android:transitionName="icpLogo"
+            app:layout_constraintBottom_toTopOf="@id/gdlLogo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivwContact"
+            android:layout_width="wrap_content"
+            android:layout_height="54dp"
+            android:layout_marginStart="40dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@null"
+            android:paddingStart="8dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="0dp"
+            android:paddingBottom="12dp"
+            android:src="@drawable/ic_contact"
+            app:layout_constraintBottom_toTopOf="@id/viwLine"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.samuelchowi.intercorpretail.custom.IREditText
+            android:id="@+id/edtPhone"
+            android:layout_width="0dp"
+            android:layout_height="54dp"
+            android:layout_marginEnd="40dp"
+            android:background="@null"
+            android:gravity="center"
+            android:hint="@string/login_hint"
+            android:imeOptions="actionDone"
+            android:inputType="phone"
+            android:maxLength="15"
+            android:paddingStart="18dp"
+            android:paddingLeft="18dp"
+            android:paddingEnd="18dp"
+            android:paddingRight="18dp"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="@color/loginHintColor"
+            android:textSize="25sp"
+            app:customFont="Helvetica"
+            app:layout_constraintBottom_toTopOf="@id/viwLine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivwContact" />
+
+        <View
+            android:id="@+id/viwLine"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/colorAccent"
+            app:layout_constraintBottom_toTopOf="@id/btnLogin"
+            app:layout_constraintEnd_toEndOf="@id/edtPhone"
+            app:layout_constraintStart_toStartOf="@id/ivwContact" />
+
+        <com.samuelchowi.intercorpretail.custom.IRButton
+            android:id="@+id/btnLogin"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/background_login_button"
+            android:text="@string/login_login"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            app:customFont="Helvetica_Neue_Medium"
+            app:layout_constraintBottom_toTopOf="@id/tvwReSend"
+            app:layout_constraintEnd_toEndOf="@id/edtPhone"
+            app:layout_constraintStart_toStartOf="@id/ivwContact"
+            app:layout_constraintVertical_bias="0.96" />
+
+        <com.samuelchowi.intercorpretail.custom.IRTextView
+            android:id="@+id/tvwReSend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60dp"
+            android:text="@string/login_re_send"
+            android:textColor="@color/loginHintColor"
+            app:customFont="Helvetica_Neue_Medium"
+            app:layout_constraintBottom_toTopOf="@id/tvwFooter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.samuelchowi.intercorpretail.custom.IRTextView
+            android:id="@+id/tvwFooter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:gravity="center_horizontal"
+            android:text="@string/login_footer"
+            android:textColor="@color/colorAccent"
+            android:textSize="15sp"
+            app:customFont="Omnes_Semi_Bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

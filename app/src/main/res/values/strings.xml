@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Intercorp Retail</string>
+    <string name="login_footer">Reto tech - Intercorp Retail\npor Joshua Rojas</string>
+    <string name="login_login">Iniciar sesión</string>
+    <string name="login_re_send"><u>No recibiste el SMS?</u></string>
+    <string name="login_hint">999 999 999</string>
+</resources>
