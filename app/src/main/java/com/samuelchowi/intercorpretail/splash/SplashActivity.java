@@ -56,5 +56,6 @@ public class SplashActivity extends BaseActivity {
     private void goToLogin() {
         ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(SplashActivity.this, binding.ivwSplash, "icpLogo");
         startActivity(LoginActivity.intent(SplashActivity.this), options.toBundle());
+        supportFinishAfterTransition();
     }
 }

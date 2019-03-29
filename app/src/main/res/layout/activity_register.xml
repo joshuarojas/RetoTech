@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gdlLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <ImageView
+            android:id="@+id/ivwLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
+            android:src="@drawable/intercorp_logo"
+            android:transitionName="icpLogo"
+            app:layout_constraintBottom_toTopOf="@id/gdlLogo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.samuelchowi.intercorpretail.custom.IRTextView
+            android:id="@+id/tvwTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="@string/register_title"
+            android:textColor="@color/colorAccent"
+            android:textSize="24sp"
+            app:customFont="Helvetica_Bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.samuelchowi.intercorpretail.custom.IREditText
+            android:id="@+id/edtName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="40dp"
+            android:backgroundTint="#2A4F7A"
+            android:hint="@string/register_name"
+            android:inputType="textPersonName"
+            android:maxLines="1"
+            android:nextFocusDown="@id/edtLastName"
+            android:textSize="20sp"
+            app:customFont="Helvetica_Neue_Medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvwTitle" />
+
+        <com.samuelchowi.intercorpretail.custom.IREditText
+            android:id="@+id/edtLastName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="40dp"
+            android:backgroundTint="#2A4F7A"
+            android:hint="@string/register_last_name"
+            android:inputType="textPersonName"
+            android:maxLines="1"
+            android:nextFocusDown="@id/edtAge"
+            android:textSize="20sp"
+            app:customFont="Helvetica_Neue_Medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edtName" />
+
+        <com.samuelchowi.intercorpretail.custom.IREditText
+            android:id="@+id/edtAge"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="40dp"
+            android:backgroundTint="#2A4F7A"
+            android:digits="0123456789"
+            android:hint="@string/register_age"
+            android:inputType="number"
+            android:maxLines="1"
+            android:textSize="20sp"
+            app:customFont="Helvetica_Neue_Medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edtLastName" />
+
+        <com.samuelchowi.intercorpretail.custom.IREditText
+            android:id="@+id/edtBirthDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="40dp"
+            android:backgroundTint="#2A4F7A"
+            android:hint="@string/register_birth_date"
+            android:inputType="none"
+            android:maxLines="1"
+            android:textSize="20sp"
+            app:customFont="Helvetica_Neue_Medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edtAge" />
+
+        <com.samuelchowi.intercorpretail.custom.IRButton
+            android:id="@+id/btnRegister"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/background_login_button"
+            android:text="@string/register_register"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            app:customFont="Helvetica_Neue_Medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/edtBirthDate" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lteAnim"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:elevation="100dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@id/btnRegister"
+            app:layout_constraintEnd_toEndOf="@id/btnRegister"
+            app:layout_constraintStart_toStartOf="@id/btnRegister"
+            app:layout_constraintTop_toTopOf="@id/btnRegister"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="anim_login.json" />
+
+        <View
+            android:id="@+id/viwOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

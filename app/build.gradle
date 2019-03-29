@@ -33,6 +33,7 @@ dependencies {
 
     implementation deps.lifecycle.viewmodel
     annotationProcessor deps.lifecycle.processor
+
     implementation deps.lottie
 
     testImplementation 'junit:junit:4.12'

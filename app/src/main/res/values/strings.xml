@@ -7,8 +7,16 @@
     <string name="preference_file_key">IRPreference</string>
     <string name="app_accept">Aceptar</string>
     <string name="login_uncompleted_number">Al parecer no has ingresado un número celular correcto, revisa la informacion.</string>
-    <string name="login_uncompleted_code">Al parecer no has ingresado un codigo correcto, revisa la informacion.</string>
+    <string name="login_uncompleted_code">Al parecer no has ingresado un código correcto, revisa la informacion.</string>
     <string name="login_couldnt_send_message">Ha ocurrido un error al enviar el SMS, vuelve a intentarlo por favor.</string>
-    <string name="login_verify_number">Verificar Codigo</string>
-    <string name="login_verify">Codigo de verificación</string>
+    <string name="login_verify_number">Verificar Código</string>
+    <string name="login_verify">Código de verificación</string>
+    <string name="register_title">Creación de cliente</string>
+    <string name="register_name">Nombre</string>
+    <string name="register_last_name">Apellido</string>
+    <string name="register_age">Edad</string>
+    <string name="register_birth_date">Fecha de nacimiento</string>
+    <string name="register_register">Regístate</string>
+    <string name="register_uncompleted">Faltan ingresar datos, por favor llena el formulario.</string>
+    <string name="register_uncompleted_field">Necesitamos que llenes este campo.</string>
 </resources>

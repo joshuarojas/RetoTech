@@ -1,5 +1,6 @@
 package com.samuelchowi.intercorpretail.login;
 
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,13 +15,13 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.samuelchowi.intercorpretail.BaseActivity;
 import com.samuelchowi.intercorpretail.R;
 import com.samuelchowi.intercorpretail.common.PreferenceUtils;
 import com.samuelchowi.intercorpretail.databinding.ActivityLoginBinding;
+import com.samuelchowi.intercorpretail.register.RegisterActivity;
 
 import java.util.concurrent.TimeUnit;
 
@@ -39,33 +40,29 @@ public class LoginActivity extends BaseActivity {
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks verifyCallback = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
         @Override
         public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
-            loginViewModel.sendingSMSData.postValue(false);
+            loginViewModel.sendingSMSData.postValue(2);
             binding.edtCode.setText(phoneAuthCredential.getSmsCode());
-//            signInWithPhoneNumber(phoneAuthCredential);
-//            hideLoading(R.string.login_verify_number);
+            signInWithPhoneNumber(phoneAuthCredential);
+            showVerifyLoading();
         }
 
         @Override
         public void onVerificationFailed(FirebaseException e) {
             Log.d(TAG, e.getMessage(), e);
             binding.tvwReSend.setVisibility(View.VISIBLE);
-            loginViewModel.sendingSMSData.postValue(false);
+            loginViewModel.sendingSMSData.postValue(0);
             showAlert(getString(R.string.login_couldnt_send_message));
-            hideLoading(R.string.login_login);
+            hideLoginLoading();
+            showLogin();
         }
 
         @Override
         public void onCodeSent(String verificationId, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
-            loginViewModel.sendingSMSData.postValue(false);
+            loginViewModel.sendingSMSData.postValue(0);
             loginViewModel.verificationIdData.postValue(verificationId);
 
-            binding.btnLogin.setVisibility(View.GONE);
-            binding.edtPhone.setVisibility(View.GONE);
-            binding.ivwContact.setVisibility(View.GONE);
-
-            binding.btnVerify.setVisibility(View.VISIBLE);
-            binding.edtCode.setVisibility(View.VISIBLE);
-            hideLoading(R.string.login_verify_number);
+            hideLoginLoading();
+            showVerify();
         }
     };
 
@@ -82,12 +79,6 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onChanged(String value) {
                 PreferenceUtils.instance(LoginActivity.this).setPhoneNumber(value);
-            }
-        });
-        loginViewModel.sendingSMSData.observe(this, new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean state) {
-                if (state) showLoading();
             }
         });
 
@@ -116,9 +107,9 @@ public class LoginActivity extends BaseActivity {
                 if (phoneNumber != null && phoneNumber.toString().trim().length() < 9) {
                     showAlert(getString(R.string.login_uncompleted_number));
                 } else if (phoneNumber != null) {
-                    showLoading();
+                    showLoginLoading();
                     binding.tvwReSend.setOnClickListener(this);
-                    loginViewModel.sendingSMSData.setValue(true);
+                    loginViewModel.sendingSMSData.setValue(1);
                     PhoneAuthProvider.getInstance().verifyPhoneNumber(
                             String.format("+51%s", phoneNumber.toString()),
                             60,
@@ -137,6 +128,7 @@ public class LoginActivity extends BaseActivity {
                 } else if (code != null) {
                     String verificationID = loginViewModel.verificationIdData.getValue();
                     if (verificationID != null) {
+                        showVerifyLoading();
                         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationID, code.toString());
                         signInWithPhoneNumber(credential);
                     }
@@ -148,20 +140,53 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if (loginViewModel.sendingSMSData.getValue() == Boolean.TRUE) showLoading();
+        Integer sendingData = loginViewModel.sendingSMSData.getValue();
+        if (sendingData != null && sendingData == 1) {
+            showLogin();
+            showLoginLoading();
+        } else if (sendingData != null && sendingData == 2) {
+            showVerify();
+        } else if (sendingData != null && sendingData == 3) {
+            showVerify();
+            showVerifyLoading();
+        }
     }
 
-    private void showLoading() {
+    private void showLoginLoading() {
         binding.btnLogin.setText("");
+        binding.lteAnimLogin.setVisibility(View.VISIBLE);
+        binding.lteAnimLogin.setRepeatCount(LottieDrawable.INFINITE);
+        binding.lteAnimLogin.playAnimation();
+    }
+
+    private void hideLoginLoading() {
+        binding.btnLogin.setText(R.string.login_login);
+        binding.viwOverlay.setVisibility(View.GONE);
+        binding.lteAnim.setVisibility(View.GONE);
+        binding.lteAnim.cancelAnimation();
+    }
+
+    private void showLogin() {
+        binding.ctlLogin.setVisibility(View.VISIBLE);
+        binding.ctlVerify.setVisibility(View.GONE);
+    }
+
+    private void showVerify() {
+        binding.ctlVerify.setVisibility(View.VISIBLE);
+        binding.ctlLogin.setVisibility(View.GONE);
+    }
+
+    private void showVerifyLoading() {
         binding.btnVerify.setText("");
+        binding.viwOverlay.setVisibility(View.VISIBLE);
         binding.lteAnim.setVisibility(View.VISIBLE);
         binding.lteAnim.setRepeatCount(LottieDrawable.INFINITE);
         binding.lteAnim.playAnimation();
     }
 
-    private void hideLoading(int btnMessage) {
-        binding.btnLogin.setText(btnMessage);
-        binding.btnVerify.setText(btnMessage);
+    private void hideVerifyLoading() {
+        binding.btnVerify.setText(R.string.login_verify_number);
+        binding.viwOverlay.setVisibility(View.GONE);
         binding.lteAnim.setVisibility(View.GONE);
         binding.lteAnim.cancelAnimation();
     }
@@ -172,17 +197,23 @@ public class LoginActivity extends BaseActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            FirebaseUser user = task.getResult().getUser();
-
+                            AuthResult result = task.getResult();
+                            if (result != null) {
+                                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(LoginActivity.this, binding.ivwSplash, "icpLogo");
+                                startActivity(RegisterActivity.intent(LoginActivity.this, result.getUser().getUid()), options.toBundle());
+                            } else {
+                                hideLoginLoading();
+                                showLogin();
+                            }
                         } else {
                             binding.edtPhone.setVisibility(View.VISIBLE);
                             binding.ivwContact.setVisibility(View.VISIBLE);
 
                             binding.edtCode.setVisibility(View.GONE);
-                            hideLoading(R.string.login_login);
+                            hideVerifyLoading();
+                            showVerify();
                         }
                     }
                 });
-
     }
 }

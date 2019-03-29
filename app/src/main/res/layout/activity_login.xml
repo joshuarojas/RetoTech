@@ -28,145 +28,184 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-
-        <com.samuelchowi.intercorpretail.custom.IREditText
-            android:id="@+id/edtCode"
-            android:layout_width="0dp"
-            android:layout_height="54dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginEnd="40dp"
-            android:background="@null"
-            android:digits="0123456789"
-            android:gravity="center"
-            android:hint="@string/login_verify"
-            android:imeOptions="actionDone"
-            android:inputType="phone"
-            android:maxLength="9"
-            android:paddingStart="18dp"
-            android:paddingLeft="18dp"
-            android:paddingEnd="18dp"
-            android:paddingRight="18dp"
-            android:textColor="@color/colorAccent"
-            android:textColorHint="@color/loginHintColor"
-            android:textSize="22sp"
-            android:visibility="gone"
-            app:customFont="Helvetica"
-            app:layout_constraintBottom_toTopOf="@id/btnVerify"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <ImageView
-            android:id="@+id/ivwContact"
-            android:layout_width="wrap_content"
-            android:layout_height="54dp"
-            android:layout_marginStart="40dp"
-            android:adjustViewBounds="true"
-            android:contentDescription="@null"
-            android:paddingStart="8dp"
-            android:paddingTop="12dp"
-            android:paddingEnd="0dp"
-            android:paddingBottom="12dp"
-            android:src="@drawable/ic_contact"
-            app:layout_constraintBottom_toTopOf="@id/viwLine"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <com.samuelchowi.intercorpretail.custom.IREditText
-            android:id="@+id/edtPhone"
-            android:layout_width="0dp"
-            android:layout_height="54dp"
-            android:layout_marginEnd="40dp"
-            android:background="@null"
-            android:digits="0123456789"
-            android:gravity="center"
-            android:hint="@string/login_hint"
-            android:imeOptions="actionDone"
-            android:inputType="phone"
-            android:maxLength="9"
-            android:paddingStart="18dp"
-            android:paddingLeft="18dp"
-            android:paddingEnd="18dp"
-            android:paddingRight="18dp"
-            android:textColor="@color/colorAccent"
-            android:textColorHint="@color/loginHintColor"
-            android:textSize="25sp"
-            app:customFont="Helvetica"
-            app:layout_constraintBottom_toTopOf="@id/viwLine"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ivwContact" />
-
-        <View
-            android:id="@+id/viwLine"
-            android:layout_width="0dp"
-            android:layout_height="2dp"
-            android:layout_marginBottom="20dp"
-            android:background="@color/colorAccent"
-            app:layout_constraintBottom_toTopOf="@id/btnLogin"
-            app:layout_constraintEnd_toEndOf="@id/btnLogin"
-            app:layout_constraintStart_toStartOf="@id/btnLogin" />
-
-        <com.samuelchowi.intercorpretail.custom.IRButton
-            android:id="@+id/btnLogin"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/background_login_button"
-            android:text="@string/login_login"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            app:customFont="Helvetica_Neue_Medium"
-            app:layout_constraintBottom_toTopOf="@id/tvwReSend"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintVertical_bias="0.96" />
-
-        <com.samuelchowi.intercorpretail.custom.IRButton
-            android:id="@+id/btnVerify"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/background_login_button"
-            android:text="@string/login_verify_number"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            android:visibility="gone"
-            app:customFont="Helvetica_Neue_Medium"
-            app:layout_constraintBottom_toTopOf="@id/tvwReSend"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintVertical_bias="0.96" />
-
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/lteAnim"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:elevation="100dp"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="@id/btnLogin"
-            app:layout_constraintEnd_toEndOf="@id/btnLogin"
-            app:layout_constraintStart_toStartOf="@id/btnLogin"
-            app:layout_constraintTop_toTopOf="@id/btnLogin"
-            app:lottie_autoPlay="true"
-            app:lottie_fileName="anim_login.json"
-            app:lottie_repeatCount="100" />
-
-        <com.samuelchowi.intercorpretail.custom.IRTextView
-            android:id="@+id/tvwReSend"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctlVerify"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="60dp"
-            android:text="@string/login_re_send"
-            android:textColor="@color/loginHintColor"
-            android:visibility="invisible"
-            app:customFont="Helvetica_Neue_Medium"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@id/tvwFooter"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.samuelchowi.intercorpretail.custom.IREditText
+                android:id="@+id/edtCode"
+                android:layout_width="0dp"
+                android:layout_height="54dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                android:background="@null"
+                android:digits="0123456789"
+                android:gravity="center"
+                android:hint="@string/login_verify"
+                android:imeOptions="actionDone"
+                android:inputType="phone"
+                android:maxLength="9"
+                android:paddingStart="18dp"
+                android:paddingLeft="18dp"
+                android:paddingEnd="18dp"
+                android:paddingRight="18dp"
+                android:textColor="@color/colorAccent"
+                android:textColorHint="@color/loginHintColor"
+                android:textSize="22sp"
+                app:customFont="Helvetica"
+                app:layout_constraintBottom_toTopOf="@id/viwLine"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <View
+                android:id="@+id/viwLine"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/colorAccent"
+                app:layout_constraintBottom_toTopOf="@id/btnVerify"
+                app:layout_constraintEnd_toEndOf="@id/btnVerify"
+                app:layout_constraintStart_toStartOf="@id/btnVerify" />
+
+            <com.samuelchowi.intercorpretail.custom.IRButton
+                android:id="@+id/btnVerify"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginBottom="40dp"
+                android:background="@drawable/background_login_button"
+                android:text="@string/login_verify_number"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                app:customFont="Helvetica_Neue_Medium"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintVertical_bias="0.96" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lteAnim"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:elevation="100dp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@id/btnVerify"
+                app:layout_constraintEnd_toEndOf="@id/btnVerify"
+                app:layout_constraintStart_toStartOf="@id/btnVerify"
+                app:layout_constraintTop_toTopOf="@id/btnVerify"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="anim_login.json" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctlLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60dp"
+            app:layout_constraintBottom_toTopOf="@id/tvwFooter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/ivwContact"
+                android:layout_width="wrap_content"
+                android:layout_height="54dp"
+                android:layout_marginStart="40dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                android:paddingStart="8dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="0dp"
+                android:paddingBottom="12dp"
+                android:src="@drawable/ic_contact"
+                app:layout_constraintBottom_toTopOf="@id/viwLineLogin"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <com.samuelchowi.intercorpretail.custom.IREditText
+                android:id="@+id/edtPhone"
+                android:layout_width="0dp"
+                android:layout_height="54dp"
+                android:layout_marginEnd="40dp"
+                android:background="@null"
+                android:digits="0123456789"
+                android:gravity="center"
+                android:hint="@string/login_hint"
+                android:imeOptions="actionDone"
+                android:inputType="phone"
+                android:maxLength="9"
+                android:paddingStart="18dp"
+                android:paddingLeft="18dp"
+                android:paddingEnd="18dp"
+                android:paddingRight="18dp"
+                android:textColor="@color/colorAccent"
+                android:textColorHint="@color/loginHintColor"
+                android:textSize="25sp"
+                app:customFont="Helvetica"
+                app:layout_constraintBottom_toTopOf="@id/viwLineLogin"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ivwContact" />
+
+            <View
+                android:id="@+id/viwLineLogin"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/colorAccent"
+                app:layout_constraintBottom_toTopOf="@id/btnLogin"
+                app:layout_constraintEnd_toEndOf="@id/btnLogin"
+                app:layout_constraintStart_toStartOf="@id/btnLogin" />
+
+            <com.samuelchowi.intercorpretail.custom.IRButton
+                android:id="@+id/btnLogin"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/background_login_button"
+                android:text="@string/login_login"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                app:customFont="Helvetica_Neue_Medium"
+                app:layout_constraintBottom_toTopOf="@id/tvwReSend"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintVertical_bias="0.96" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lteAnimLogin"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:elevation="100dp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@id/btnLogin"
+                app:layout_constraintEnd_toEndOf="@id/btnLogin"
+                app:layout_constraintStart_toStartOf="@id/btnLogin"
+                app:layout_constraintTop_toTopOf="@id/btnLogin"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="anim_login.json" />
+
+            <com.samuelchowi.intercorpretail.custom.IRTextView
+                android:id="@+id/tvwReSend"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/login_re_send"
+                android:textColor="@color/loginHintColor"
+                android:visibility="invisible"
+                app:customFont="Helvetica_Neue_Medium"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.samuelchowi.intercorpretail.custom.IRTextView
             android:id="@+id/tvwFooter"
@@ -181,5 +220,18 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <View
+            android:id="@+id/viwOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:elevation="20dp"
+            android:focusable="true"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
