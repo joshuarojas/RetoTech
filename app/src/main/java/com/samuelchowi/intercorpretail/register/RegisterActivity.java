@@ -15,6 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.samuelchowi.intercorpretail.BaseActivity;
 import com.samuelchowi.intercorpretail.R;
 import com.samuelchowi.intercorpretail.databinding.ActivityRegisterBinding;
+import com.samuelchowi.intercorpretail.main.MainActivity;
 
 import java.util.Calendar;
 import java.util.Locale;
@@ -65,17 +66,31 @@ public class RegisterActivity extends BaseActivity implements DatePickerDialog.O
                         uid = bundle.getString(UID_KEY, "default-01");
 
                     binding.btnRegister.setText("");
+                    binding.viwOverlay.setVisibility(View.VISIBLE);
+                    binding.lteAnim.setVisibility(View.VISIBLE);
                     binding.lteAnim.setRepeatCount(LottieDrawable.INFINITE);
                     binding.lteAnim.playAnimation();
+
+                    UserModel user = viewModel.userData.getValue();
+                    if (user == null) user = new UserModel();
+                    user.setName(binding.edtName.getText().toString());
+                    user.setLastName(binding.edtLastName.getText().toString());
+                    user.setAge(Integer.parseInt(binding.edtAge.getText().toString()));
+                    user.setDate(binding.edtBirthDate.getText().toString());
+                    viewModel.userData.setValue(user);
 
                     database.getReference().child("users").child(uid).setValue(viewModel.userData.getValue())
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-
+                                        startActivity(MainActivity.intent(RegisterActivity.this, binding.edtName.getText().toString()));
                                     } else {
-
+                                        showAlert(getString(R.string.register_error));
+                                        binding.btnRegister.setText(R.string.register_register);
+                                        binding.viwOverlay.setVisibility(View.GONE);
+                                        binding.lteAnim.setVisibility(View.GONE);
+                                        binding.lteAnim.cancelAnimation();
                                     }
                                 }
                             });

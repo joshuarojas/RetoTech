@@ -145,11 +145,20 @@ public class LoginActivity extends BaseActivity {
             showLogin();
             showLoginLoading();
         } else if (sendingData != null && sendingData == 2) {
+            hideLoginLoading();
             showVerify();
         } else if (sendingData != null && sendingData == 3) {
             showVerify();
             showVerifyLoading();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (binding.ctlVerify.getVisibility() == View.VISIBLE)
+            showLogin();
+        else
+            super.onBackPressed();
     }
 
     private void showLoginLoading() {
@@ -162,8 +171,8 @@ public class LoginActivity extends BaseActivity {
     private void hideLoginLoading() {
         binding.btnLogin.setText(R.string.login_login);
         binding.viwOverlay.setVisibility(View.GONE);
-        binding.lteAnim.setVisibility(View.GONE);
-        binding.lteAnim.cancelAnimation();
+        binding.lteAnimLogin.setVisibility(View.GONE);
+        binding.lteAnimLogin.cancelAnimation();
     }
 
     private void showLogin() {
@@ -201,6 +210,7 @@ public class LoginActivity extends BaseActivity {
                             if (result != null) {
                                 ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(LoginActivity.this, binding.ivwSplash, "icpLogo");
                                 startActivity(RegisterActivity.intent(LoginActivity.this, result.getUser().getUid()), options.toBundle());
+                                hideVerifyLoading();
                             } else {
                                 hideLoginLoading();
                                 showLogin();

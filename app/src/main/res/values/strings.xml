@@ -19,4 +19,7 @@
     <string name="register_register">Regístate</string>
     <string name="register_uncompleted">Faltan ingresar datos, por favor llena el formulario.</string>
     <string name="register_uncompleted_field">Necesitamos que llenes este campo.</string>
+    <string name="register_error">Ocurrio un error al registrar tus datos, vuelve a intentarlo</string>
+    <string name="main_welcome">Bienvenido</string>
+    <string name="register_close"><u>Cerrar sesión</u></string>
 </resources>
