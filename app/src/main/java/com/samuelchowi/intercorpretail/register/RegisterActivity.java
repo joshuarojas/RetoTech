@@ -84,7 +84,10 @@ public class RegisterActivity extends BaseActivity implements DatePickerDialog.O
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        startActivity(MainActivity.intent(RegisterActivity.this, binding.edtName.getText().toString()));
+                                        startActivity(MainActivity
+                                                .intent(RegisterActivity.this)
+                                                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
+                                        finish();
                                     } else {
                                         showAlert(getString(R.string.register_error));
                                         binding.btnRegister.setText(R.string.register_register);
