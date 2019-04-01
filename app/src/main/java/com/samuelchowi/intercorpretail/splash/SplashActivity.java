@@ -30,16 +30,6 @@ public class SplashActivity extends BaseActivity {
             public void onAnimationEnd(Animator animation) {
                 goToLogin();
 
-                // Adding a listener to navigate to the login,
-                // I didn't finish the splash activity because it leaves an awful
-                // effect between the shared element animation
-                binding.ctlContainer.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        goToLogin();
-                    }
-                });
-
                 // I hide the loading to avoid to have the view freezed on the screen, it's inside a
                 // Handler to avoid and ugly transition between the shared element animation and the reposition
                 // of the imageView with the logo of Intercorp.
